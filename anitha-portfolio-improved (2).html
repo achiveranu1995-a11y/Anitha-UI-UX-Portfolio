@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anitha Gajendran — UX/UI Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAF9F6;
+    --bg2: #F2F0EB;
+    --ink: #1A1916;
+    --ink2: #5C5A54;
+    --ink3: #9C9A94;
+    --accent: #2D4A3E;
+    --accent-light: #E8F0EC;
+    --border: rgba(26,25,22,0.10);
+    --card: #FFFFFF;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { font-size: 18px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,249,246,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+  }
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* SECTIONS */
+  section { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-light);
+    padding: 0.3rem 0.9rem; border-radius: 40px; margin-bottom: 1.4rem;
+  }
+  .hero-tag::before { content: '●'; font-size: 0.5rem; color: var(--accent); }
+  h1.hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.3rem;
+  }
+  h1.hero-title em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--ink2);
+    line-height: 1.7;
+    margin-bottom: 2.2rem;
+    max-width: 520px;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--accent); color: #fff;
+    font-family: var(--sans); font-size: 1rem; font-weight: 500;
+    padding: 0.75rem 1.6rem; border-radius: 40px;
+    text-decoration: none; transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: transparent; color: var(--ink);
+    font-family: var(--sans); font-size: 1rem; font-weight: 500;
+    padding: 0.75rem 1.6rem; border-radius: 40px;
+    border: 1.5px solid var(--border);
+    text-decoration: none; transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .hero-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.2rem;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+  }
+  .hero-avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 1.8rem; color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .hero-card h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 0.2rem; }
+  .hero-card .role { font-size: 0.9rem; color: var(--ink3); margin-bottom: 1.4rem; }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+  .pill {
+    font-size: 0.8rem; font-weight: 500;
+    padding: 0.28rem 0.75rem; border-radius: 40px;
+    background: var(--bg2); color: var(--ink2);
+  }
+  .cert-badge {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    background: var(--accent-light); border-radius: 12px;
+    padding: 0.9rem 1rem;
+    text-decoration: none; color: var(--ink);
+    transition: background 0.2s;
+  }
+  .cert-badge:hover { background: #D4E6DC; }
+  .cert-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .cert-info strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--ink); }
+  .cert-info span { font-size: 0.82rem; color: var(--ink2); }
+  .social-row { display: flex; gap: 0.75rem; margin-top: 1.2rem; }
+  .social-link {
+    font-size: 0.82rem; font-weight: 500;
+    padding: 0.32rem 0.8rem; border-radius: 40px;
+    border: 1px solid var(--border);
+    color: var(--ink2); text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .social-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* SECTION HEADERS */
+  .sec-label {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.6rem;
+  }
+  h2.sec-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  h2.sec-title em { font-style: italic; color: var(--accent); }
+  .sec-sub { font-size: 1.05rem; color: var(--ink2); max-width: 560px; line-height: 1.7; }
+
+  /* ABOUT */
+  #about { background: var(--bg); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: start; }
+  .about-traits { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .trait-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 1.2rem;
+  }
+  .trait-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .trait-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .trait-card p { font-size: 0.86rem; color: var(--ink2); line-height: 1.5; }
+  .edu-block { margin-top: 2.5rem; }
+  .edu-block h3 {
+    font-family: var(--serif); font-size: 1.25rem; margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
+  }
+  .edu-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-item strong { font-size: 1rem; font-weight: 600; display: block; margin-bottom: 0.15rem; }
+  .edu-item span { font-size: 0.9rem; color: var(--ink2); }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; margin-top: 3rem; }
+  .skill-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 1.6rem;
+  }
+  .skill-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+  .skill-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.9rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag {
+    font-size: 0.8rem; padding: 0.22rem 0.65rem;
+    background: var(--bg); border-radius: 40px; color: var(--ink2);
+  }
+
+  /* CASE STUDIES */
+  #casestudies { background: var(--bg); }
+  .cs-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+  .cs-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 2.2rem; text-decoration: none; color: var(--ink);
+    display: flex; flex-direction: column; gap: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .cs-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.09); border-color: var(--accent); }
+  .cs-type {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-light);
+    display: inline-block; padding: 0.25rem 0.75rem; border-radius: 40px;
+  }
+  .cs-card h3 { font-family: var(--serif); font-size: 1.7rem; line-height: 1.2; }
+  .cs-card p { font-size: 0.95rem; color: var(--ink2); line-height: 1.65; flex: 1; }
+  .cs-stack { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+  .cs-stack span {
+    font-size: 0.78rem; padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border); border-radius: 40px; color: var(--ink3);
+  }
+  .cs-cta {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.9rem; font-weight: 600; color: var(--accent);
+    margin-top: 0.4rem;
+  }
+  .cs-cta::after { content: '→'; transition: transform 0.2s; }
+  .cs-card:hover .cs-cta::after { transform: translateX(3px); }
+
+  /* PROJECTS */
+  #projects { background: var(--bg2); }
+  .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .filter-btn {
+    font-family: var(--sans); font-size: 0.88rem; font-weight: 500;
+    padding: 0.4rem 1.1rem; border-radius: 40px;
+    border: 1.5px solid var(--border); background: transparent; color: var(--ink2);
+    cursor: pointer; transition: all 0.18s;
+  }
+  .filter-btn.active, .filter-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+  .proj-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 1.6rem; text-decoration: none; color: var(--ink);
+    display: flex; flex-direction: column; gap: 0.7rem;
+    transition: transform 0.18s, border-color 0.18s;
+  }
+  .proj-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .proj-emoji { font-size: 1.5rem; }
+  .proj-type { font-size: 0.76rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink3); }
+  .proj-card h3 { font-size: 1.1rem; font-weight: 600; }
+  .proj-card p { font-size: 0.88rem; color: var(--ink2); line-height: 1.55; flex: 1; }
+  .proj-status {
+    font-size: 0.78rem; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+  }
+  .proj-status.live { color: var(--accent); }
+  .proj-status.wip { color: #B06000; }
+  .proj-status.soon { color: var(--ink3); }
+
+  /* CONTACT */
+  #contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 1rem 1.2rem; text-decoration: none; color: var(--ink);
+    transition: border-color 0.2s;
+  }
+  .contact-item:hover { border-color: var(--accent); }
+  .contact-item-icon { font-size: 1.2rem; }
+  .contact-item strong { display: block; font-size: 0.82rem; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-item span { font-size: 0.97rem; }
+  .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 2rem; }
+  .social-card {
+    display: flex; align-items: center; gap: 0.75rem;
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 0.8rem 1rem; text-decoration: none; color: var(--ink);
+    font-size: 0.9rem; font-weight: 500;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .social-card:hover { border-color: var(--accent); color: var(--accent); }
+  .open-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent-light); color: var(--accent);
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
+    padding: 0.35rem 0.9rem; border-radius: 40px; margin-bottom: 1.5rem;
+  }
+  .open-badge::before { content: '●'; font-size: 0.45rem; animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem clamp(1.5rem, 5vw, 4rem);
+    font-size: 0.88rem;
+  }
+  footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  footer a:hover { color: #fff; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-card { display: none; }
+    .about-grid, .cs-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Anitha G.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#casestudies">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:1100px; margin:0 auto;">
+  <div>
+    <div class="hero-tag">Open to Work · UX/UI Designer</div>
+    <h1 class="hero-title">Hello, I'm<br><em>Anitha</em> ✦</h1>
+    <p class="hero-sub">Designing calm, intuitive experiences. A freshly certified UX/UI Designer with a passion for human-centred design, accessibility, and clean visual systems.</p>
+    <div class="hero-btns">
+      <a href="#casestudies" class="btn-primary">View My Work →</a>
+      <a href="https://drive.google.com/file/d/1_NPTVuRO5Xlw1cQgnszckPMy8hJ7PaVv/view" target="_blank" class="btn-secondary">Download Resume ↗</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-avatar">A</div>
+    <h3>Anitha Gajendran</h3>
+    <p class="role">UX/UI Designer · India</p>
+    <div class="pill-row">
+      <span class="pill">Figma</span>
+      <span class="pill">User Research</span>
+      <span class="pill">Wireframing</span>
+      <span class="pill">Prototyping</span>
+      <span class="pill">a11y</span>
+    </div>
+    <a href="https://v2.zenclass.in/certificateDownload/F0vyIhW2LhjJSaIN?download=true" target="_blank" class="cert-badge">
+      <span class="cert-icon">🎓</span>
+      <div class="cert-info">
+        <strong>UX/UI Design Certification</strong>
+        <span>GUVI HCL · IITM Incubated · Feb–May 2025</span>
+      </div>
+    </a>
+    <div class="social-row">
+      <a href="https://linkedin.com" class="social-link">LinkedIn</a>
+      <a href="https://www.behance.net/anithaanu3" class="social-link">Behance</a>
+      <a href="https://github.com/achiveranu1995-a11y" class="social-link">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="sec-label">About Me</p>
+        <h2 class="sec-title">Designing with empathy,<br><em>not assumptions.</em></h2>
+        <p style="font-size:1.05rem; color:var(--ink2); line-height:1.75; margin-bottom:1.2rem;">
+          I'm Anitha, a UX/UI designer from India who recently completed a professional course at <strong style="color:var(--ink)">GUVI HCL (an IITM Incubated Company)</strong>. I believe great design starts with deeply understanding people — before touching any tool.
+        </p>
+        <p style="font-size:1.05rem; color:var(--ink2); line-height:1.75;">
+          My background in <strong style="color:var(--ink)">BCA (Bachelor of Computer Applications)</strong> from KGISL College gives me a strong technical foundation, which I channel into crafting clean, accessible, and user-centred digital experiences.
+        </p>
+        <div class="about-traits">
+          <div class="trait-card"><div class="trait-icon">🔍</div><h4>Research First</h4><p>Every decision backed by real user insight.</p></div>
+          <div class="trait-card"><div class="trait-icon">♿</div><h4>Accessibility</h4><p>WCAG-aware design that works for everyone.</p></div>
+          <div class="trait-card"><div class="trait-icon">✦</div><h4>Clean Visual UI</h4><p>Pixel-perfect layouts with strong hierarchy.</p></div>
+          <div class="trait-card"><div class="trait-icon">🌱</div><h4>Always Growing</h4><p>Building skills in design systems & motion.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="edu-block">
+          <h3>Education & Certification</h3>
+          <div class="edu-item">
+            <strong>UX/UI Design Course</strong>
+            <span>GUVI HCL · An IITM Incubated Company<br>February 2025 – May 2025</span>
+            <a href="https://v2.zenclass.in/certificateDownload/F0vyIhW2LhjJSaIN?download=true" target="_blank" style="display:inline-block;margin-top:0.5rem;font-size:0.88rem;color:var(--accent);text-decoration:none;font-weight:500;">View Certificate ↗</a>
+          </div>
+          <div class="edu-item">
+            <strong>Bachelor of Computer Applications (BCA)</strong>
+            <span>KGISL College · Graduated</span>
+          </div>
+        </div>
+        <div style="margin-top:2rem;">
+          <h3 style="font-family:var(--serif);font-size:1.25rem;margin-bottom:1rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border);">Tools & Software</h3>
+          <div class="tools-grid">
+            <span class="pill">Figma</span><span class="pill">Adobe XD</span><span class="pill">Miro</span>
+            <span class="pill">FigJam</span><span class="pill">Notion</span><span class="pill">Maze</span>
+            <span class="pill">Zeplin</span><span class="pill">Canva</span><span class="pill">Adobe Illustrator</span><span class="pill">Photoshop</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="sec-label">What I Bring</p>
+    <h2 class="sec-title">Skills & <em>Competencies</em></h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🎯</div>
+        <h3>UX Design</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">User Research</span><span class="skill-tag">Wireframing</span>
+          <span class="skill-tag">User Flows</span><span class="skill-tag">Info Architecture</span>
+          <span class="skill-tag">Usability Testing</span><span class="skill-tag">Persona Creation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎨</div>
+        <h3>UI Design</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Visual Hierarchy</span><span class="skill-tag">Typography</span>
+          <span class="skill-tag">Colour Systems</span><span class="skill-tag">Component Design</span>
+          <span class="skill-tag">Responsive Layout</span><span class="skill-tag">Prototyping</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">♿</div>
+        <h3>Accessibility (a11y)</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">WCAG 2.1</span><span class="skill-tag">Contrast Audits</span>
+          <span class="skill-tag">Keyboard Nav</span><span class="skill-tag">ARIA Patterns</span>
+          <span class="skill-tag">Screen Reader UX</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📱</div>
+        <h3>Mobile UX</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">iOS Guidelines</span><span class="skill-tag">Material Design</span>
+          <span class="skill-tag">Touch Interactions</span><span class="skill-tag">App Flows</span>
+          <span class="skill-tag">Gesture Design</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗂️</div>
+        <h3>Design Process</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Design Thinking</span><span class="skill-tag">Double Diamond</span>
+          <span class="skill-tag">Affinity Mapping</span><span class="skill-tag">Journey Mapping</span>
+          <span class="skill-tag">Heuristic Eval.</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤝</div>
+        <h3>Collaboration</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Design Critique</span><span class="skill-tag">Stakeholder Comms</span>
+          <span class="skill-tag">Cross-functional</span><span class="skill-tag">Agile Basics</span>
+          <span class="skill-tag">Documentation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CASE STUDIES -->
+<section id="casestudies">
+  <div class="container">
+    <div class="cs-header">
+      <div>
+        <p class="sec-label">Featured Work</p>
+        <h2 class="sec-title" style="margin-bottom:0">Case <em>Studies</em></h2>
+      </div>
+      <a href="https://www.behance.net/anithaanu3" target="_blank" class="btn-secondary" style="font-size:0.9rem;">All on Behance →</a>
+    </div>
+    <div class="cs-grid">
+      <a href="https://www.behance.net/gallery/240828805/Chore-Buddy" target="_blank" class="cs-card">
+        <span class="cs-type">📱 Mobile App</span>
+        <h3>Chore Buddy</h3>
+        <p>A family chore management app designed for clarity and engagement. Led full end-to-end UX — user flows, information architecture, and a warm, approachable visual system built in Figma.</p>
+        <div class="cs-stack">
+          <span>Figma</span><span>User Flows</span><span>IA</span>
+        </div>
+        <span class="cs-cta">View case study</span>
+      </a>
+      <a href="https://www.behance.net/gallery/238122529/Lets-Cook" target="_blank" class="cs-card">
+        <span class="cs-type">🍳 Mobile App</span>
+        <h3>Let's Cook</h3>
+        <p>A smart meal planning app for busy individuals. Designed the complete UX — meal decision flows, weekly planning, grocery management — with a calm, frictionless feel.</p>
+        <div class="cs-stack">
+          <span>Figma</span><span>Miro</span><span>Notion</span>
+        </div>
+        <span class="cs-cta">View case study</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="sec-label">All Work</p>
+    <h2 class="sec-title" style="margin-bottom:1.8rem"><em>Projects</em></h2>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProjects('all',this)">All</button>
+      <button class="filter-btn" onclick="filterProjects('mobile',this)">Mobile App</button>
+      <button class="filter-btn" onclick="filterProjects('web',this)">Web Design</button>
+      <button class="filter-btn" onclick="filterProjects('branding',this)">Branding</button>
+    </div>
+    <div class="projects-grid" id="projects-grid">
+      <a href="https://www.behance.net/gallery/240828805/Chore-Buddy" target="_blank" class="proj-card" data-cat="mobile">
+        <span class="proj-emoji">📱</span>
+        <span class="proj-type">Mobile App</span>
+        <h3>Chore Buddy</h3>
+        <p>Family chore management with gamification and weekly task overview.</p>
+        <span class="proj-status live">↗ View on Behance</span>
+      </a>
+      <a href="https://www.behance.net/gallery/238122529/Lets-Cook" target="_blank" class="proj-card" data-cat="mobile">
+        <span class="proj-emoji">🍳</span>
+        <span class="proj-type">Mobile App</span>
+        <h3>Let's Cook</h3>
+        <p>Smart meal planning and grocery management for busy lifestyles.</p>
+        <span class="proj-status live">↗ View on Behance</span>
+      </a>
+      <div class="proj-card" data-cat="web" style="cursor:default;">
+        <span class="proj-emoji">🌐</span>
+        <span class="proj-type">Web Design</span>
+        <h3>Retail Dashboard</h3>
+        <p>Admin dashboard redesign focused on data clarity and accessible components.</p>
+        <span class="proj-status wip">⏳ In progress</span>
+      </div>
+      <div class="proj-card" data-cat="web" style="cursor:default;">
+        <span class="proj-emoji">📚</span>
+        <span class="proj-type">Web Design</span>
+        <h3>EdTech Platform</h3>
+        <p>Learning management UI designed with cognitive accessibility in mind.</p>
+        <span class="proj-status wip">⏳ In progress</span>
+      </div>
+      <div class="proj-card" data-cat="branding" style="cursor:default;">
+        <span class="proj-emoji">🌿</span>
+        <span class="proj-type">Branding</span>
+        <h3>Wellness Brand Identity</h3>
+        <p>Full visual identity — logo, colour system, and design language for a wellness startup.</p>
+        <span class="proj-status soon">— Coming soon</span>
+      </div>
+      <div class="proj-card" data-cat="mobile" style="cursor:default;">
+        <span class="proj-emoji">💰</span>
+        <span class="proj-type">Mobile App</span>
+        <h3>Budget Tracker App</h3>
+        <p>Personal finance app with a calm UX that makes budgeting feel approachable.</p>
+        <span class="proj-status soon">— Coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="open-badge">Open to Work</div>
+        <p class="sec-label">Get In Touch</p>
+        <h2 class="sec-title">Open to full-time &<br><em>internship</em> opportunities.</h2>
+        <p style="font-size:1.05rem;color:var(--ink2);line-height:1.7;margin-top:1rem;">I'm a fresher with a strong design foundation and a lot of drive. If you're building something that cares about people, I'd love to be part of your team.</p>
+        <div class="contact-info">
+          <a href="mailto:achiveranu1995@gmail.com" class="contact-item">
+            <span class="contact-item-icon">📧</span>
+            <div><strong>Email</strong><span>achiveranu1995@gmail.com</span></div>
+          </a>
+          <a href="tel:+919952643934" class="contact-item">
+            <span class="contact-item-icon">📞</span>
+            <div><strong>Phone</strong><span>+91 99526 43934</span></div>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:var(--serif);font-size:1.3rem;margin-bottom:0.3rem;margin-top:3.5rem;">Find me online</h3>
+        <p style="font-size:0.92rem;color:var(--ink3);margin-bottom:1.2rem;">Connect, collaborate, or just say hello.</p>
+        <div class="social-grid">
+          <a href="https://linkedin.com" target="_blank" class="social-card">💼 LinkedIn</a>
+          <a href="https://www.behance.net/anithaanu3" target="_blank" class="social-card">🎨 Behance</a>
+          <a href="https://dribbble.com" target="_blank" class="social-card">🏀 Dribbble</a>
+          <a href="https://github.com/achiveranu1995-a11y" target="_blank" class="social-card">💻 GitHub</a>
+          <a href="https://v2.zenclass.in/certificateDownload/F0vyIhW2LhjJSaIN?download=true" target="_blank" class="social-card" style="grid-column:1/-1;">🎓 UX/UI Certificate ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Anitha Gajendran · <a href="mailto:achiveranu1995@gmail.com">achiveranu1995@gmail.com</a> · © 2026 · UX/UI Designer · India · Open to work</p>
+</footer>
+
+<script>
+function filterProjects(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#projects-grid .proj-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
